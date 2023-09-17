@@ -2,6 +2,8 @@ package com.example.pringbootthymeleaf.controller;
 
 import com.example.pringbootthymeleaf.model.User;
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,11 +13,15 @@ import java.util.List;
 
 @Controller
 public class UserController {
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping("demo")
     public String demo(Model model) {
         model.addAttribute("message", "Hello Thymeleaf");
         double grade = 90.5;
+        logger.info("This is an info message");
+        logger.warn("This is a warn message");
+        logger.error("This is a error message");
         model.addAttribute("grade", grade);
         model.addAttribute("GPA", convertGPA(grade));
         // return to templates/demo.html page.
